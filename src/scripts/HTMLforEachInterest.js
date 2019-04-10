@@ -12,6 +12,9 @@ const htmlForEachInterest = {
             const interestReview = cardBody.appendChild(htmlFactory.createElementWithText("p", interestObj.review));
         }
         const interestLocation = cardBody.appendChild(htmlFactory.createElementWithText("p", interestObj.place.name))
+        const interestButtonGroup = cardBody.appendChild(htmlFactory.createElementWithText("div", undefined, `interestButtonGroup--${interestObj.id}`))
+        const interestEditButton = interestButtonGroup.appendChild(htmlFactory.createElementWithText("button", "Edit Point of Interest", `editInterestButton--${interestObj.id}`));
+        const interestDeleteButton = interestButtonGroup.appendChild(htmlFactory.createElementWithText("button", "Delete Point of Interest", `DeleteInterestButton--${interestObj.id}`));
         return cardForEach;
     },
     listAllInterests: (interestArray) => {
