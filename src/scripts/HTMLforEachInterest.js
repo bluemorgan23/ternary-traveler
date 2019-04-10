@@ -23,6 +23,10 @@ const htmlForEachInterest = {
         })
         const interestDeleteButton = interestButtonGroup.appendChild(htmlFactory.createElementWithText("button", "Delete Point of Interest", `DeleteInterestButton--${interestObj.id}`));
         interestDeleteButton.type = "button";
+        interestDeleteButton.addEventListener("click", function(){
+            const id = event.target.id.split("--")[1];
+            eventHandlers.deleteHandler(id);
+        })
         return cardForEach;
     },
     listAllInterests: (interestArray) => {

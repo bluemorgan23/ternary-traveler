@@ -30,6 +30,11 @@ const API = {
     getInterest: (id) => {
         return fetch(`${baseURL}/interests/${id}`)
         .then(response => response.json());
+    },
+    deleteInterest: (id) => {
+        return fetch(`${baseURL}/interests/${id}`, {
+            method: "DELETE"
+        }).then(response => response.json());
     }
 }
 
