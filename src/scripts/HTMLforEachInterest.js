@@ -16,10 +16,10 @@ const htmlForEachInterest = {
         const interestButtonGroup = cardBody.appendChild(htmlFactory.createElementWithText("div", undefined, `interestButtonGroup--${interestObj.id}`))
         const interestEditButton = interestButtonGroup.appendChild(htmlFactory.createElementWithText("button", "Add Cost and Review", `editInterestButton--${interestObj.id}`));
         interestEditButton.type = "button";
-        interestEditButton.addEventListener("click", function(event){
-            const id = event.target.id.split("--")[1];
+        interestEditButton.addEventListener("click", function(){
+            const id = Number(event.target.id.split("--")[1]);
             const cardToEdit = document.querySelector(`#card--${id}`);
-            eventHandlers.addReviewHandler(cardToEdit);
+            eventHandlers.addReviewHandler(cardToEdit, id);
         })
         const interestDeleteButton = interestButtonGroup.appendChild(htmlFactory.createElementWithText("button", "Delete Point of Interest", `DeleteInterestButton--${interestObj.id}`));
         interestDeleteButton.type = "button";

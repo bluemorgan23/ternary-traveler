@@ -19,13 +19,17 @@ const API = {
     },
     // This fetch call edits a certain interest in the database
     patchInterest: (id, obj) => {
-        return fetch(`${baseURL}/${id}`, {
+        return fetch(`${baseURL}/interests/${id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
             },
             body: JSON.stringify(obj)
         }).then(response => response.json());
+    },
+    getInterest: (id) => {
+        return fetch(`${baseURL}/interests/${id}`)
+        .then(response => response.json());
     }
 }
 

@@ -1,5 +1,7 @@
 import htmlFactory from "./htmlFactory";
 import eventHandlers from "./formEventHandler";
+import API from "./dataManager";
+import htmlForEachInterest from "./HTMLforEachInterest";
 
 // The buildForm function simply builds the html for the form and returns the card that contains the elements. This is meant to be appended to the div for the form
 
@@ -37,9 +39,9 @@ const formHTML = {
         })
         return formCard;
     },
-    buildEditForm: (interestName) => {
+    buildEditForm: (interestName, id) => {
         const editFrag = document.createDocumentFragment();
-        const editHeader = editFrag.appendChild(htmlFactory.createElementWithText("h3", `Add Cost/Review for ${interestName}`, "editForm-header"));
+        const editHeader = editFrag.appendChild(htmlFactory.createElementWithText("h3", `Add Cost/Review for ${interestName}`, `editForm-header--${id}`));
         const editForm = editFrag.appendChild(htmlFactory.createElementWithText("form", undefined, "editForm"));
         const editCostGroup = editForm.appendChild(htmlFactory.createElementWithText("div", undefined, "editForm-costGroup"));
         const editCostLabel = editCostGroup.appendChild(htmlFactory.createElementWithText("label", "Add Cost: "));
@@ -47,8 +49,12 @@ const formHTML = {
         const addReviewGroup = editForm.appendChild(htmlFactory.createElementWithText("div", undefined, "editForm-reviewGroup"));
         const addReviewLabel = addReviewGroup.appendChild(htmlFactory.createElementWithText("label", "Add Review: "));
         const addReviewInput = addReviewGroup.appendChild(htmlFactory.createElementWithText("textarea", undefined, "editForm-reviewInput"));
-        const saveEditButton = editForm.appendChild(htmlFactory.createElementWithText("button", "Update", "editForm-updateButton"));
+        const saveEditButton = editForm.appendChild(htmlFactory.createElementWithText("button", "Update", `editForm-updateButton--${id}`));
         saveEditButton.type = "button";
+        saveEditButton.addEventListener("click", function(event){
+            const id = Number(event.target.id.split("--")[1]);
+            eventHandlers.submitEditHandler(id);
+        })
         return editFrag;
     }
 }
