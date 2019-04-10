@@ -7,6 +7,7 @@ const API = {
     getInterestsWithPlace: () => {
         return fetch(`${baseURL}/interests?_expand=place`).then(listOfInterests => listOfInterests.json());
     },
+    // This fetch call posts a new interest to the Database
     postInterest: (obj) => {
         return fetch(`${baseURL}/interests`, {
             method: "POST",
@@ -15,6 +16,16 @@ const API = {
             },
             body: JSON.stringify(obj)
         }).then(response => response.json())
+    },
+    // This fetch call edits a certain interest in the database
+    patchInterest: (id, obj) => {
+        return fetch(`${baseURL}/${id}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(obj)
+        }).then(response => response.json());
     }
 }
 

@@ -1,7 +1,5 @@
 import htmlFactory from "./htmlFactory";
-import submitNewInterest from "./formEventHandler";
-import API from "./dataManager";
-import htmlForEachInterest from "./HTMLforEachInterest";
+import eventHandlers from "./formEventHandler";
 
 // The buildForm function simply builds the html for the form and returns the card that contains the elements. This is meant to be appended to the div for the form
 
@@ -35,9 +33,23 @@ const formHTML = {
         submitButton.type = "button";
         submitButton.addEventListener("click", function(){
             htmlFactory.clearContainer(mainContainer);
-            submitNewInterest.submitHandler();
+            eventHandlers.submitHandler();
         })
         return formCard;
+    },
+    buildEditForm: (interestName) => {
+        const editFrag = document.createDocumentFragment();
+        const editHeader = editFrag.appendChild(htmlFactory.createElementWithText("h3", `Add Cost/Review for ${interestName}`, "editForm-header"));
+        const editForm = editFrag.appendChild(htmlFactory.createElementWithText("form", undefined, "editForm"));
+        const editCostGroup = editForm.appendChild(htmlFactory.createElementWithText("div", undefined, "editForm-costGroup"));
+        const editCostLabel = editCostGroup.appendChild(htmlFactory.createElementWithText("label", "Add Cost: "));
+        const editCostInput = editCostGroup.appendChild(htmlFactory.createElementWithText("input", undefined, "editForm-costInput"));
+        const addReviewGroup = editForm.appendChild(htmlFactory.createElementWithText("div", undefined, "editForm-reviewGroup"));
+        const addReviewLabel = addReviewGroup.appendChild(htmlFactory.createElementWithText("label", "Add Review: "));
+        const addReviewInput = addReviewGroup.appendChild(htmlFactory.createElementWithText("textarea", undefined, "editForm-reviewInput"));
+        const saveEditButton = editForm.appendChild(htmlFactory.createElementWithText("button", "Update", "editForm-updateButton"));
+        saveEditButton.type = "button";
+        return editFrag;
     }
 }
 
