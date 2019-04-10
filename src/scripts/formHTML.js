@@ -61,7 +61,9 @@ const formHTML = {
         const editFrag = document.createDocumentFragment();
         const editHeader = editFrag.appendChild(htmlFactory.createElementWithText("h3", `Add Cost/Review for ${interestName}`, `editForm-header--${id}`));
         editHeader.classList.add("card-header");
-        const editForm = editFrag.appendChild(htmlFactory.createElementWithText("form", undefined, "editForm"));
+        const editBody = editFrag.appendChild(htmlFactory.createElementWithText("div"));
+        editBody.classList.add("card-body");
+        const editForm = editBody.appendChild(htmlFactory.createElementWithText("form", undefined, "editForm"));
         editForm.classList.add("form");
         const editCostGroup = editForm.appendChild(htmlFactory.createElementWithText("div", undefined, "editForm-costGroup"));
         editCostGroup.classList.add("form-group");
