@@ -60,15 +60,26 @@ const formHTML = {
     buildEditForm: (interestName, id) => {
         const editFrag = document.createDocumentFragment();
         const editHeader = editFrag.appendChild(htmlFactory.createElementWithText("h3", `Add Cost/Review for ${interestName}`, `editForm-header--${id}`));
+        editHeader.classList.add("card-header");
         const editForm = editFrag.appendChild(htmlFactory.createElementWithText("form", undefined, "editForm"));
+        editForm.classList.add("form");
         const editCostGroup = editForm.appendChild(htmlFactory.createElementWithText("div", undefined, "editForm-costGroup"));
+        editCostGroup.classList.add("form-group");
         const editCostLabel = editCostGroup.appendChild(htmlFactory.createElementWithText("label", "Add Cost: "));
         const editCostInput = editCostGroup.appendChild(htmlFactory.createElementWithText("input", undefined, "editForm-costInput"));
+        editCostInput.classList.add("form-control");
+        editCostInput.placeholder = "$$$";
         const addReviewGroup = editForm.appendChild(htmlFactory.createElementWithText("div", undefined, "editForm-reviewGroup"));
+        addReviewGroup.classList.add("form-group");
         const addReviewLabel = addReviewGroup.appendChild(htmlFactory.createElementWithText("label", "Add Review: "));
         const addReviewInput = addReviewGroup.appendChild(htmlFactory.createElementWithText("textarea", undefined, "editForm-reviewInput"));
+        addReviewInput.placeholder = "The zoo was a blast! E.g.";
+        addReviewInput.classList.add("form-control");
         const saveEditButton = editForm.appendChild(htmlFactory.createElementWithText("button", "Update", `editForm-updateButton--${id}`));
         saveEditButton.type = "button";
+        saveEditButton.classList.add("btn");
+        saveEditButton.classList.add("btn-primary");
+        saveEditButton.classList.add("btn-block");
         saveEditButton.addEventListener("click", function(event){
             const id = Number(event.target.id.split("--")[1]);
             eventHandlers.submitEditHandler(id);

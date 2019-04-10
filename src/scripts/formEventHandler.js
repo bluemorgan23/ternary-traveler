@@ -23,11 +23,12 @@ const mainContainer = document.querySelector("#display-container");
 const eventHandlers = {
     // submitHandler is meant to post the new interest to the database with the input field values as the parameters for buildInterestObj. It also clears the display container and updates it with a new fetch call.
     submitHandler: () => {
-        const nameInput = document.querySelector("#createForm-nameInput").value;
-        const descInput = document.querySelector("#createForm-descriptionInput").value;
-        const costInput = Number(document.querySelector("#createForm-costInput").value);
+        let nameInput = document.querySelector("#createForm-nameInput").value;
+        const form = document.querySelector("#createForm");
+        let descInput = document.querySelector("#createForm-descriptionInput").value;
+        let costInput = Number(document.querySelector("#createForm-costInput").value);
         const placeInput = Number(document.querySelector("#placeSelect").value);
-           API.postInterest(buildInterestObj(placeInput, nameInput, descInput, costInput, "")).then(() => API.getInterestsWithPlace()).then(response => htmlForEachInterest.listAllInterests(response));
+           API.postInterest(buildInterestObj(placeInput, nameInput, descInput, costInput, "")).then(() => API.getInterestsWithPlace()).then(response => htmlForEachInterest.listAllInterests(response)).then(() => form.reset())
     },
     addReviewHandler: (cardToEdit, id) => {
         const interestName = cardToEdit.firstChild.textContent;
