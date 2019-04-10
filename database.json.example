@@ -1,0 +1,45 @@
+{
+    "places": [
+      {
+        "id": 1,
+        "name": "Los Angeles",
+        "visa_required": false
+      },
+      {
+        "id": 2,
+        "name": "San Francisco",
+        "visa_required": false
+      },
+      {
+        "id": 3,
+        "name": "Toronto",
+        "visa_required": false
+      }
+    ],
+    "interests": [
+         {
+            "id": 1,
+            "placeId": 1,
+            "name": "Korean Bell of Friendship",
+            "description": "A huge bell given to the US as a bi-centennial gift and as a commemoration of veterans of the Korean War",
+            "cost": 0.00,
+            "review": ""
+        },
+        {
+            "id": 1,
+            "placeId": 2,
+            "name": "Alcatraz Island",
+            "description": "Park rangers conduct tours by recounting the prison's thrilling history along with intriguing anecdotes about Al Capone and other legendary figures that made a 'home' here.",
+            "cost": 0.00,
+            "review": ""
+        },
+        {
+            "id": 1,
+            "placeId": 3,
+            "name": "Hockey Hall of Fame",
+            "description": "Honor the achievements of some of the greatest stars in hockey at this shrine to Canada's national sport.",
+            "cost": 0.00,
+            "review": ""
+        }
+    ]
+   }
