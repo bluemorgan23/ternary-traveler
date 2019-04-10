@@ -15,8 +15,7 @@ const createElementWithText = (element, text, id) => {
 const htmlForEachInterest = {
     // The buildEachInterest method will be called for each interest within the listInterestsToDom function. It takes the object (interest) and builds the structure with the values from the database.
     buildEachInterest: (interestObj) => {
-        const mainContainer = document.querySelector("#display-container");
-        const cardForEach = mainContainer.appendChild(createElementWithText("div", undefined, `card--${interestObj.id}`));
+        const cardForEach = createElementWithText("div", undefined, `card--${interestObj.id}`);
         const cardHeader = cardForEach.appendChild(createElementWithText("h3", interestObj.name, `interestName--${interestObj.id}`));
         const cardBody = cardForEach.appendChild(createElementWithText("div", undefined, `cardBody--${interestObj.id}`));
         const interestDescription = cardBody.appendChild(createElementWithText("p", interestObj.description));
@@ -26,6 +25,10 @@ const htmlForEachInterest = {
         }
         const interestLocation = cardBody.appendChild(createElementWithText("p", interestObj.place.name))
         return cardForEach;
+    },
+    listAllInterests: (interestArray) => {
+        const mainContainer = document.querySelector("#display-container");
+        interestArray.forEach(interest => mainContainer.appendChild(htmlForEachInterest.buildEachInterest(interest)));
     }
 }
 
