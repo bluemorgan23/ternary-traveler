@@ -44,7 +44,9 @@ const eventHandlers = {
         }).then(() => htmlFactory.clearContainer(mainContainer)).then(() => API.getInterestsWithPlace()).then(response => htmlForEachInterest.listAllInterests(response));
     },
     deleteHandler: (id) => {
-        API.deleteInterest(id).then(() => htmlFactory.clearContainer(mainContainer)).then(() => API.getInterestsWithPlace()).then((response => htmlForEachInterest.listAllInterests(response)));
+        if(window.confirm("Are you sure you want to delete?")){
+            API.deleteInterest(id).then(() => htmlFactory.clearContainer(mainContainer)).then(() => API.getInterestsWithPlace()).then((response => htmlForEachInterest.listAllInterests(response)));
+        }
     }
 }
 
