@@ -1,6 +1,11 @@
 import htmlFactory from "./htmlFactory";
+import submitNewInterest from "./formEventHandler";
+import API from "./dataManager";
+import htmlForEachInterest from "./HTMLforEachInterest";
 
 // The buildForm function simply builds the html for the form and returns the card that contains the elements. This is meant to be appended to the div for the form
+
+const mainContainer = document.querySelector("#display-container");
 
 const formHTML = {
     buildForm: () => {
@@ -28,6 +33,10 @@ const formHTML = {
         torontoOption.value = 3;
         const submitButton = form.appendChild(htmlFactory.createElementWithText("button", "Submit", "createForm-submitButton"));
         submitButton.type = "button";
+        submitButton.addEventListener("click", function(){
+            htmlFactory.clearContainer(mainContainer);
+            submitNewInterest.submitHandler();
+        })
         return formCard;
     }
 }
