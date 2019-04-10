@@ -10,19 +10,34 @@ const mainContainer = document.querySelector("#display-container");
 const formHTML = {
     buildForm: () => {
         const formCard = htmlFactory.createElementWithText("div", undefined, "createForm-card");
+        formCard.classList.add("card");
+        formCard.classList.add("mb-3");
         const formHeader = formCard.appendChild(htmlFactory.createElementWithText("h3", "Create New Point Of Interest", "form-header"));
+        formHeader.classList.add("card-header");
         const formCardBody = formCard.appendChild(htmlFactory.createElementWithText("div", undefined, "createFrom-cardBody"));
+        formCardBody.classList.add("card-body");
         const form = formCardBody.appendChild(htmlFactory.createElementWithText("form", undefined, "createForm"));
+        form.classList.add("form");
         const nameFormGroup = form.appendChild(htmlFactory.createElementWithText("div", undefined, "createForm-nameGroup"));
+        nameFormGroup.classList.add("form-group");
         const nameLabel = nameFormGroup.appendChild(htmlFactory.createElementWithText("label", "Name: ", "createForm-nameLabel"));
         const nameInput = nameFormGroup.appendChild(htmlFactory.createElementWithText("input", undefined, "createForm-nameInput"));
+        nameInput.placeholder = "The Zoo e.g."
+        nameInput.classList.add("form-control");
         const descFormGroup = form.appendChild(htmlFactory.createElementWithText("div", undefined, "createForm-descGroup"));
+        descFormGroup.classList.add("form-group");
         const descLabel = descFormGroup.appendChild(htmlFactory.createElementWithText("label", "Description"));
         const descInput = descFormGroup.appendChild(htmlFactory.createElementWithText("textarea", undefined, "createForm-descriptionInput"));
+        descInput.placeholder = "Cool animals to see e.g."
+        descInput.classList.add("form-control");
         const costFormGroup = form.appendChild(htmlFactory.createElementWithText("div", undefined, "createForm-costGroup"));
+        costFormGroup.classList.add("form-group");
         const costLabel = costFormGroup.appendChild(htmlFactory.createElementWithText("label", "Cost: "));
         const costInput = costFormGroup.appendChild(htmlFactory.createElementWithText("input", undefined, "createForm-costInput"));
+        costInput.placeholder = "Enter '0' if Unknown"
+        costInput.classList.add("form-control");
         const placeSelectGroup = form.appendChild(htmlFactory.createElementWithText("div", undefined, "createForm-selectGroup"))
+        placeSelectGroup.classList.add("form-group");
         const selectLabel = placeSelectGroup.appendChild(htmlFactory.createElementWithText("label", "Select a Place: ", "createForm-selectLabel"));
         const placeSelect = placeSelectGroup.appendChild(htmlFactory.createElementWithText("select", undefined, "placeSelect"));
         const laOption = placeSelect.appendChild(htmlFactory.createElementWithText("option", "Los Angeles"));
@@ -33,6 +48,9 @@ const formHTML = {
         torontoOption.value = 3;
         const submitButton = form.appendChild(htmlFactory.createElementWithText("button", "Submit", "createForm-submitButton"));
         submitButton.type = "button";
+        submitButton.classList.add("btn");
+        submitButton.classList.add("btn-primary");
+        submitButton.classList.add("btn-block");
         submitButton.addEventListener("click", function(){
             htmlFactory.clearContainer(mainContainer);
             eventHandlers.submitHandler();
