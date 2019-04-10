@@ -11,7 +11,7 @@ const formHTML = {
     buildForm: () => {
         const formCard = htmlFactory.createElementWithText("div", undefined, "createForm-card");
         formCard.classList.add("card");
-        formCard.classList.add("mb-3");
+        formCard.classList.add("bg-light");
         const formHeader = formCard.appendChild(htmlFactory.createElementWithText("h3", "Create New Point Of Interest", "form-header"));
         formHeader.classList.add("card-header");
         const formCardBody = formCard.appendChild(htmlFactory.createElementWithText("div", undefined, "createFrom-cardBody"));
@@ -46,6 +46,19 @@ const formHTML = {
         sanFranOption.value = 2;
         const torontoOption = placeSelect.appendChild(htmlFactory.createElementWithText("option", "Toronto"));
         torontoOption.value = 3;
+        const filterInterests = formCardBody.appendChild(htmlFactory.createElementWithText("div"));
+        filterInterests.classList.add("form-control");
+        const filterLabel = filterInterests.appendChild(htmlFactory.createElementWithText("label", "Filter Points of Interest by Location"));
+        filterInterests.setAttribute("for", "filterInterests");
+        const radioLA = filterInterests.appendChild(htmlFactory.createElementWithText("input", "Los Angeles"))
+        radioLA.type = "radio";
+        radioLA.name = "filterInterests";
+        const radioSF = filterInterests.appendChild(htmlFactory.createElementWithText("input", "San Francisco"))
+        radioSF.type = "radio";
+        radioSF.name = "filterInterests";
+        const radioT = filterInterests.appendChild(htmlFactory.createElementWithText("input", "Toronto"))
+        radioT.type = "radio";
+        radioT.name = "filterInterests";
         const submitButton = form.appendChild(htmlFactory.createElementWithText("button", "Submit", "createForm-submitButton"));
         submitButton.type = "button";
         submitButton.classList.add("btn");

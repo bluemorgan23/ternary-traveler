@@ -1,0 +1,9 @@
+body div {
+    margin: 10px;
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
