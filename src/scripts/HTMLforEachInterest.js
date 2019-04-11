@@ -45,7 +45,7 @@ const htmlForEachInterest = {
         const interestEditButton = interestButtonGroup.appendChild(htmlFactory.createElementWithText("button", "Add Cost and Review", `editInterestButton--${interestObj.id}`));
         interestEditButton.classList.add("btn");
         interestEditButton.classList.add("btn-primary");
-        //interestEditButton.classList.add("btn-sm");
+        interestEditButton.classList.add("btn-sm");
         interestEditButton.classList.add("text-white");
         interestEditButton.type = "button";
         interestEditButton.addEventListener("click", function(){
