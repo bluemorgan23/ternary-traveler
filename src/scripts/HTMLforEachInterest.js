@@ -7,6 +7,7 @@ const htmlForEachInterest = {
         const cardForEach = htmlFactory.createElementWithText("div", undefined, `card--${interestObj.id}`);
         cardForEach.classList.add("card");
         cardForEach.classList.add("mb-2");
+        cardForEach.classList.add("text-center");
         const cardHeader = cardForEach.appendChild(htmlFactory.createElementWithText("h3", interestObj.name, `interestName--${interestObj.id}`));
         cardHeader.classList.add("card-header");
         const cardBody = cardForEach.appendChild(htmlFactory.createElementWithText("div", undefined, `cardBody--${interestObj.id}`));
@@ -23,7 +24,7 @@ const htmlForEachInterest = {
                 cardForEach.classList.add("SF");
                 break;
             case(interestObj.placeId === 3):
-                cardForEach.classList.add("bg-success");
+                cardForEach.classList.add("bg-primary");
                 cardForEach.classList.add("text-white");
                 cardForEach.classList.add("T");
         }
@@ -41,7 +42,9 @@ const htmlForEachInterest = {
         interestButtonGroup.classList.add("btn-group");
         const interestEditButton = interestButtonGroup.appendChild(htmlFactory.createElementWithText("button", "Add Cost and Review", `editInterestButton--${interestObj.id}`));
         interestEditButton.classList.add("btn");
-        interestEditButton.classList.add("btn-warning");
+        interestEditButton.classList.add("btn-success");
+        //interestEditButton.classList.add("btn-sm");
+        interestEditButton.classList.add("text-white");
         interestEditButton.type = "button";
         interestEditButton.addEventListener("click", function(){
             const id = Number(event.target.id.split("--")[1]);
@@ -52,6 +55,7 @@ const htmlForEachInterest = {
         interestDeleteButton.type = "button";
         interestDeleteButton.classList.add("btn");
         interestDeleteButton.classList.add("btn-danger");
+        interestDeleteButton.classList.add("btn-sm");
         interestDeleteButton.addEventListener("click", function(){
             const id = event.target.id.split("--")[1];
             eventHandlers.deleteHandler(id);
