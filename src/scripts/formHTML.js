@@ -11,10 +11,10 @@ const formHTML = {
     buildForm: () => {
         const formCard = htmlFactory.createElementWithText("div", undefined, "createForm-card");
         formCard.classList.add("card");
-        formCard.classList.add("mb-3");
-        const formHeader = formCard.appendChild(htmlFactory.createElementWithText("h3", "Create New Point Of Interest", "form-header"));
+        formCard.classList.add("bg-light");
+        const formHeader = formCard.appendChild(htmlFactory.createElementWithText("h3", "Create New Point of Interest", "form-header"));
         formHeader.classList.add("card-header");
-        const formCardBody = formCard.appendChild(htmlFactory.createElementWithText("div", undefined, "createFrom-cardBody"));
+        const formCardBody = formCard.appendChild(htmlFactory.createElementWithText("div", undefined, "createForm-cardBody"));
         formCardBody.classList.add("card-body");
         const form = formCardBody.appendChild(htmlFactory.createElementWithText("form", undefined, "createForm"));
         form.classList.add("form");
@@ -26,7 +26,7 @@ const formHTML = {
         nameInput.classList.add("form-control");
         const descFormGroup = form.appendChild(htmlFactory.createElementWithText("div", undefined, "createForm-descGroup"));
         descFormGroup.classList.add("form-group");
-        const descLabel = descFormGroup.appendChild(htmlFactory.createElementWithText("label", "Description"));
+        const descLabel = descFormGroup.appendChild(htmlFactory.createElementWithText("label", "Description: "));
         const descInput = descFormGroup.appendChild(htmlFactory.createElementWithText("textarea", undefined, "createForm-descriptionInput"));
         descInput.placeholder = "Cool animals to see e.g."
         descInput.classList.add("form-control");
@@ -38,8 +38,10 @@ const formHTML = {
         costInput.classList.add("form-control");
         const placeSelectGroup = form.appendChild(htmlFactory.createElementWithText("div", undefined, "createForm-selectGroup"))
         placeSelectGroup.classList.add("form-group");
-        const selectLabel = placeSelectGroup.appendChild(htmlFactory.createElementWithText("label", "Select a Place: ", "createForm-selectLabel"));
+        const selectLabel = placeSelectGroup.appendChild(htmlFactory.createElementWithText("label", "Select a City:", "createForm-selectLabel"));
+        selectLabel.classList.add("mr-1")
         const placeSelect = placeSelectGroup.appendChild(htmlFactory.createElementWithText("select", undefined, "placeSelect"));
+        placeSelect.classList.add("form-control");
         const laOption = placeSelect.appendChild(htmlFactory.createElementWithText("option", "Los Angeles"));
         laOption.value = 1;
         const sanFranOption = placeSelect.appendChild(htmlFactory.createElementWithText("option", "San Francisco"));
@@ -55,6 +57,65 @@ const formHTML = {
             htmlFactory.clearContainer(mainContainer);
             eventHandlers.submitHandler();
         })
+        const filterInterests = formCard.appendChild(htmlFactory.createElementWithText("div"));
+        filterInterests.classList.add("card-footer");
+        const filterLabel = filterInterests.appendChild(htmlFactory.createElementWithText("h4", "Filter By City"));
+        const divForLa = filterInterests.appendChild(htmlFactory.createElementWithText("div"));
+        divForLa.classList.add("form-check");
+        const radioLA = divForLa.appendChild(htmlFactory.createElementWithText("input", undefined, "radioLA"))
+        radioLA.addEventListener("click", function(){
+            document.querySelectorAll(".SF").forEach(card => card.style.display = "none");
+            document.querySelectorAll(".T").forEach(card => card.style.display = "none");
+            document.querySelectorAll(".LA").forEach(card => card.style.display = "block");
+        })
+        radioLA.type = "radio";
+        radioLA.setAttribute("name", "filterCity");
+        radioLA.classList.add("form-check-input");
+        const labelForLa = divForLa.appendChild(htmlFactory.createElementWithText("label", "Los Angeles"))
+        labelForLa.setAttribute("for", "radioLA")
+        labelForLa.classList.add("form-check-label")
+        const divForSF = filterInterests.appendChild(htmlFactory.createElementWithText("div"));
+        divForSF.classList.add("form-check");
+        const radioSF = divForSF.appendChild(htmlFactory.createElementWithText("input", undefined, "radioSF"))
+        radioSF.addEventListener("click", function(){
+            document.querySelectorAll(".SF").forEach(card => card.style.display = "block");
+            document.querySelectorAll(".T").forEach(card => card.style.display = "none");
+            document.querySelectorAll(".LA").forEach(card => card.style.display = "none");
+        })
+        radioSF.type = "radio";
+        radioSF.setAttribute("name", "filterCity");
+        radioSF.classList.add("form-check-input")
+        const labelForSF = divForSF.appendChild(htmlFactory.createElementWithText("label", "San Francisco"))
+        labelForSF.setAttribute("for", "radioSF")
+        labelForSF.classList.add("form-check-label")
+        const divForT = filterInterests.appendChild(htmlFactory.createElementWithText("div"));
+        divForT.classList.add("form-check");
+        const radioT = divForT.appendChild(htmlFactory.createElementWithText("input", undefined, "radioT"))
+        radioT.addEventListener("click", function(){
+            document.querySelectorAll(".SF").forEach(card => card.style.display = "none");
+            document.querySelectorAll(".T").forEach(card => card.style.display = "block");
+            document.querySelectorAll(".LA").forEach(card => card.style.display = "none");
+        })
+        radioT.classList.add("form-check-input");
+        radioT.type = "radio";
+        radioT.setAttribute("name", "filterCity");
+        const labelForT = divForT.appendChild(htmlFactory.createElementWithText("label", "Toronto"))
+        labelForT.setAttribute("for", "radioT")
+        labelForT.classList.add("form-check-label")
+        const divForAll = filterInterests.appendChild(htmlFactory.createElementWithText("div"));
+        divForAll.classList.add("form-check");
+        const radioALL = divForAll.appendChild(htmlFactory.createElementWithText("input", undefined, "radioALL"))
+        radioALL.addEventListener("click", function(){
+            document.querySelectorAll(".SF").forEach(card => card.style.display = "block");
+            document.querySelectorAll(".T").forEach(card => card.style.display = "block");
+            document.querySelectorAll(".LA").forEach(card => card.style.display = "block");
+        })
+        radioALL.type = "radio";
+        radioALL.setAttribute("name", "filterCity");
+        radioALL.classList.add("form-check-input");
+        const labelForALL = divForAll.appendChild(htmlFactory.createElementWithText("label", "All"))
+        labelForALL.setAttribute("for", "radioAll")
+        labelForALL.classList.add("form-check-label")
         return formCard;
     },
     buildEditForm: (interestName, id) => {

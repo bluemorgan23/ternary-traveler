@@ -28,7 +28,16 @@ const eventHandlers = {
         let descInput = document.querySelector("#createForm-descriptionInput").value;
         let costInput = Number(document.querySelector("#createForm-costInput").value);
         const placeInput = Number(document.querySelector("#placeSelect").value);
-           API.postInterest(buildInterestObj(placeInput, nameInput, descInput, costInput, "")).then(() => API.getInterestsWithPlace()).then(response => htmlForEachInterest.listAllInterests(response)).then(() => form.reset())
+        console.log(costInput);
+        if(isNaN(costInput)){
+            alert("Invalid entry for cost. Please Enter a number.")
+            API.getInterestsWithPlace().then(response => htmlForEachInterest.listAllInterests(response));
+        } else if(nameInput !== "" && descInput !== "" && costInput !== ""){
+            API.postInterest(buildInterestObj(placeInput, nameInput, descInput, costInput, "")).then(() => API.getInterestsWithPlace()).then(response => htmlForEachInterest.listAllInterests(response)).then(() => form.reset())
+        } else {
+            alert("Input field appears to be empty! Please make sure you have filled out the form.")
+            API.getInterestsWithPlace().then(response => htmlForEachInterest.listAllInterests(response))
+        }
     },
     addReviewHandler: (cardToEdit, id) => {
         const interestName = cardToEdit.firstChild.textContent;
