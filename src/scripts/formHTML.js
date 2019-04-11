@@ -41,6 +41,7 @@ const formHTML = {
         const selectLabel = placeSelectGroup.appendChild(htmlFactory.createElementWithText("label", "Select a City:", "createForm-selectLabel"));
         selectLabel.classList.add("mr-1")
         const placeSelect = placeSelectGroup.appendChild(htmlFactory.createElementWithText("select", undefined, "placeSelect"));
+        placeSelect.classList.add("form-control");
         const laOption = placeSelect.appendChild(htmlFactory.createElementWithText("option", "Los Angeles"));
         laOption.value = 1;
         const sanFranOption = placeSelect.appendChild(htmlFactory.createElementWithText("option", "San Francisco"));
