@@ -62,6 +62,11 @@ const formHTML = {
         const divForLa = filterInterests.appendChild(htmlFactory.createElementWithText("div"));
         divForLa.classList.add("form-check");
         const radioLA = divForLa.appendChild(htmlFactory.createElementWithText("input", undefined, "radioLA"))
+        radioLA.addEventListener("click", function(){
+            document.querySelectorAll(".SF").forEach(card => card.style.display = "none");
+            document.querySelectorAll(".T").forEach(card => card.style.display = "none");
+            document.querySelectorAll(".LA").forEach(card => card.style.display = "block");
+        })
         radioLA.type = "radio";
         radioLA.setAttribute("name", "filterCity");
         radioLA.classList.add("form-check-input");
@@ -71,6 +76,11 @@ const formHTML = {
         const divForSF = filterInterests.appendChild(htmlFactory.createElementWithText("div"));
         divForSF.classList.add("form-check");
         const radioSF = divForSF.appendChild(htmlFactory.createElementWithText("input", undefined, "radioSF"))
+        radioSF.addEventListener("click", function(){
+            document.querySelectorAll(".SF").forEach(card => card.style.display = "block");
+            document.querySelectorAll(".T").forEach(card => card.style.display = "none");
+            document.querySelectorAll(".LA").forEach(card => card.style.display = "none");
+        })
         radioSF.type = "radio";
         radioSF.setAttribute("name", "filterCity");
         radioSF.classList.add("form-check-input")
@@ -80,6 +90,11 @@ const formHTML = {
         const divForT = filterInterests.appendChild(htmlFactory.createElementWithText("div"));
         divForT.classList.add("form-check");
         const radioT = divForT.appendChild(htmlFactory.createElementWithText("input", undefined, "radioT"))
+        radioT.addEventListener("click", function(){
+            document.querySelectorAll(".SF").forEach(card => card.style.display = "none");
+            document.querySelectorAll(".T").forEach(card => card.style.display = "block");
+            document.querySelectorAll(".LA").forEach(card => card.style.display = "none");
+        })
         radioT.classList.add("form-check-input");
         radioT.type = "radio";
         radioT.setAttribute("name", "filterCity");
@@ -89,6 +104,11 @@ const formHTML = {
         const divForAll = filterInterests.appendChild(htmlFactory.createElementWithText("div"));
         divForAll.classList.add("form-check");
         const radioALL = divForAll.appendChild(htmlFactory.createElementWithText("input", undefined, "radioALL"))
+        radioALL.addEventListener("click", function(){
+            document.querySelectorAll(".SF").forEach(card => card.style.display = "block");
+            document.querySelectorAll(".T").forEach(card => card.style.display = "block");
+            document.querySelectorAll(".LA").forEach(card => card.style.display = "block");
+        })
         radioALL.type = "radio";
         radioALL.setAttribute("name", "filterCity");
         radioALL.classList.add("form-check-input");

@@ -8,23 +8,25 @@ const htmlForEachInterest = {
         cardForEach.classList.add("card");
         cardForEach.classList.add("mb-2");
         cardForEach.classList.add("text-center");
+        cardForEach.classList.add("bg-secondary");
         const cardHeader = cardForEach.appendChild(htmlFactory.createElementWithText("h3", interestObj.name, `interestName--${interestObj.id}`));
         cardHeader.classList.add("card-header");
+        // cardHeader.classList.add("bg-info")
         const cardBody = cardForEach.appendChild(htmlFactory.createElementWithText("div", undefined, `cardBody--${interestObj.id}`));
         cardBody.classList.add("card-body");
         switch(true){
             case(interestObj.placeId === 1):
-                cardForEach.classList.add("bg-secondary");
+                // cardForEach.classList.add("bg-secondary");
                 cardForEach.classList.add("text-white");
                 cardForEach.classList.add("LA");
                 break;
             case(interestObj.placeId === 2):
-                cardForEach.classList.add("bg-info");
+                // cardForEach.classList.add("bg-info");
                 cardForEach.classList.add("text-white");
                 cardForEach.classList.add("SF");
                 break;
             case(interestObj.placeId === 3):
-                cardForEach.classList.add("bg-primary");
+                // cardForEach.classList.add("bg-primary");
                 cardForEach.classList.add("text-white");
                 cardForEach.classList.add("T");
         }
@@ -42,7 +44,7 @@ const htmlForEachInterest = {
         interestButtonGroup.classList.add("btn-group");
         const interestEditButton = interestButtonGroup.appendChild(htmlFactory.createElementWithText("button", "Add Cost and Review", `editInterestButton--${interestObj.id}`));
         interestEditButton.classList.add("btn");
-        interestEditButton.classList.add("btn-success");
+        interestEditButton.classList.add("btn-primary");
         //interestEditButton.classList.add("btn-sm");
         interestEditButton.classList.add("text-white");
         interestEditButton.type = "button";
